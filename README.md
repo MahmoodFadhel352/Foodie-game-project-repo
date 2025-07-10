@@ -31,3 +31,8 @@ Each correct answer rewards the player with points, and at the end of the quiz, 
 4. The user would be considered a winner based on a certain criteria like for example 12 questions right puts you as a true foodie and 20 ones right is considered master foodie
 5. After finishing the game, the user would get his final score, comment
 6. There would be an option to restart the game
+## Technologies used
+HTML, CSS, javascript
+## Credit
+>[Trelloboard](https://trello.com/b/0H8b6rth/foodie-game-project)
+>[Wireframe](https://drive.google.com/file/d/19uQbMy4TTDOjH8v7Tcxfl67l-rvM92d-/view?usp=sharing)
