@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+   <!-- Start Screen: shown first, hidden once quiz begins -->
+  <div class="start-screen">
+    <!-- Main title -->
+    <h1>Are you a true FOODIE?</h1>
+    <div class="image-placeholder">
+      <img src="image2.png" alt="Food logo">
+    </div>
+
+    <!-- Button to kick off the quiz -->
+    <button id="start-btn">Start</button>
+  </div>
+
+  <!-- Quiz Screen: displays each question + choices; hidden until "Start" -->
+  <div class="quiz-screen hidden">
+    <!-- Question text goes here -->
+    <h2 id="question">Question will appear here</h2>
+
+    <!-- Four choice buttons -->
+    <div class="choices-container">
+      <button class="choice-btn" data-choice="0">Choice 1</button>
+      <button class="choice-btn" data-choice="1">Choice 2</button>
+      <button class="choice-btn" data-choice="2">Choice 3</button>
+      <button class="choice-btn" data-choice="3">Choice 4</button>
+    </div>
+
+    <!-- Next question button -->
+    <button id="next-btn">Next »</button>
+  </div>
+
+  <!-- End Screen: shows final score & custom message; hidden until quiz ends -->
+  <div class="end-screen hidden">
+    <!-- Static heading -->
+    <h2>All Done!</h2>
+
+    <!-- Numeric score -->
+    <p>Your score: <span id="score">0/25</span></p>
+
+    <!-- Dynamic result message set by JS -->
+    <p id="result-message">You are a true foodie!</p>
+
+    <!-- Option to restart the quiz -->
+    <button id="restart-btn">Play Again</button>
+  </div>
+</body>
+</html>

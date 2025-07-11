@@ -1,0 +1,136 @@
+/* ------------------------------------------------------------------
+   1) RESET & BASE
+   ------------------------------------------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #dfc5c5; /* main-page title color */
+  color: brown;
+  line-height: 1.4;
+}
+
+/* Utility: hide screens via .hidden */
+.hidden {
+  display: none;
+}
+
+/* ------------------------------------------------------------------
+   2) SCREEN LAYOUTS
+   ------------------------------------------------------------------ */
+/* Shared flex‐centering for each “screen” */
+.start-screen,
+.quiz-screen,
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-height: 100vh;
+  text-align: center;
+}
+/* ------------------------------------------------------------------
+   3) START & END TITLES
+   ------------------------------------------------------------------ */
+/* Big bold titles on start & end screens */
+.start-screen h1,
+.end-screen h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: brown;
+}
+
+/* Intro image */
+.image-placeholder img {
+  width: 60%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------------------------------------
+   5) QUIZ QUESTION
+   ------------------------------------------------------------------ */
+.quiz-screen h2#question {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  color: brown;
+}
+
+/* Answer buttons grid */
+.choices-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+/* Choice buttons */
+.choice-btn {
+  background: beige;
+  border: none;
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.1s ease-in-out;
+  color: brown;
+}
+
+.choice-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Next button */
+#next-btn {
+  align-self: flex-end;
+  background: #FFE5B4;
+  color: brown;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#next-btn:hover {
+  background: #E6BC9A;
+}
+
+/* Start & Play Again buttons */
+#start-btn,
+#restart-btn {
+  background: #FFE5B4;
+  color: brown;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 100;
+}
+
+#start-btn:hover,
+#restart-btn:hover {
+  background: #E6BC9A;
+}
+
+/* End screen message */
+.end-screen p#result-message {
+  font-size: 1.25rem;
+  margin: 1rem 0 2rem;
+  color: brown;
+}
