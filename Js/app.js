@@ -62,6 +62,80 @@ function showQuestion() {
     btn.dataset.correct= shuffled[i].isCorrect;   // "true" or "false"
   });
 }
+//Handle answer selection
+function selectAnswer(e) {
+  const selected= e.target;
+  const isCorrect= selected.dataset.correct === 'true';
+
+  // mark correct / wrong
+  if (isCorrect) {
+    selected.classList.add('correct');
+    score++;
+  } else {
+    selected.classList.add('wrong');
+    // highlight the real correct button
+    const correctBtn = choicesEls.find(btn => btn.dataset.correct === 'true');
+    correctBtn.classList.add('correct');
+  }
+
+  // disable all and enable Next
+  choicesEls.forEach(btn => btn.disabled = true);
+  nextBtn.disabled = false;
+}
+
+
+//Next question or end
+function handleNext() {
+  currentIndex++;
+  if (currentIndex < shuffledQs.length) {
+    showQuestion();
+  } else {
+    showEndScreen();
+  }
+}
+
+//Show final screen
+function showEndScreen() {
+  //Hidding the quiz screen and showing the result screen
+  quizScreen.style.display = 'none';
+  endScreen.style.display  = 'flex';
+
+  scoreEl.innerText    = `${score} / ${questions.length}`;
+  const pct = (score / questions.length)*100;
+  if (pct===100)      resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
+  else if (pct>=80)   resultMsg.innerText = "You are a true FOODIE! 🍽️";
+  else if (pct>=50)   resultMsg.innerText = "Not bad, you're on your way to foodie status! 😉";
+  else                resultMsg.innerText = "Maybe you are not there yet! 🍕";
+}
+
+//Restart quiz
+function restartQuiz() {
+  quizScreen.style.display = 'flex';
+  endScreen.style.display  = 'none';
+  startScreen.style.display= 'none';
+
+  currentIndex = 0;
+  score        = 0;
+  nextBtn.disabled = true;
+
+  // clear any styling on choices
+  choicesEls.forEach(b => {
+    b.classList.remove('correct','wrong');
+    b.disabled = false;
+  });
+}
+//shuffle feature for the questions and choices
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 //Event listeners
 startBtn.addEventListener('click', startQuiz);
-//Checkpoint
+choicesEls.forEach(btn => btn.addEventListener('click', selectAnswer));
+nextBtn.addEventListener('click', handleNext);
+restartBtn.addEventListener('click', restartQuiz);
+
