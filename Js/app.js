@@ -64,3 +64,4 @@ function showQuestion() {
 }
 //Event listeners
 startBtn.addEventListener('click', startQuiz);
+//Checkpoint
