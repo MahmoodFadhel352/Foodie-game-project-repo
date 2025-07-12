@@ -66,3 +66,4 @@
 END
 */
 //Subject to change later with the developing 
+import questions from './data.js';
