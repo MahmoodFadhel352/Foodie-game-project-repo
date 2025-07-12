@@ -14,11 +14,6 @@ body {
   line-height: 1.4;
 }
 
-/* Utility: hide screens via .hidden */
-.hidden {
-  display: none;
-}
-
 /* ------------------------------------------------------------------
    2) SCREEN LAYOUTS
    ------------------------------------------------------------------ */
@@ -133,4 +128,20 @@ body {
   font-size: 1.25rem;
   margin: 1rem 0 2rem;
   color: brown;
+}
+/*Feedback styling */
+.choice-btn.correct {
+  background-color: #4ECDC4;
+  color: brown;
+}
+
+.choice-btn.wrong {
+  background-color: #FF6B6B;
+  color: brown;
+}
+
+/*Next button disabled state */
+#next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
