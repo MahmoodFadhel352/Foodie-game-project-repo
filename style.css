@@ -8,14 +8,14 @@
 }
 
 body {
-  font-family: 'Courgette', sans-serif;
-  background-color: #dfc5c5; /* main-page title color */
-  color:brown;
-  line-height: 1.4;
-  background-image: url('./Assets/bg2.png');
+  background-color: #F8F2E6;
+  background-image: url('./Assets/bg3.png');
   background-repeat: repeat;
   background-position: center;
   background-size: auto;
+  font-family: 'Courgette', sans-serif;
+  color:brown;
+  line-height: 1.4;
 }
 /* ------------------------------------------------------------------
    2) SCREEN LAYOUTS
@@ -95,7 +95,7 @@ body {
 /* Next button */
 #next-btn {
   align-self: flex-end;
-  background: #cda7e2;
+  background: burlywood;
   color: brown;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -106,13 +106,13 @@ body {
 }
 
 #next-btn:hover {
-  background: #E6BC9A;
+  background: #dcaf89;
 }
 
 /* Start & Play Again buttons */
 #start-btn,
 #restart-btn {
-  background: #cda7e2;
+  background: burlywood;
   color: brown;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -126,7 +126,7 @@ body {
 
 #start-btn:hover,
 #restart-btn:hover {
-  background: #E6BC9A;
+  background: #e8bb96;
 }
 
 /* End screen message */
