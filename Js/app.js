@@ -67,7 +67,7 @@ function showQuestion() {
     btn.disabled = false;
   });
 
-  //Render shuffled text + mark correct in a data-attr
+  //Render shuffled text + mark correct
   choicesEls.forEach((btn, i) => {
     btn.innerText= shuffled[i].text;
     btn.dataset.correct= shuffled[i].isCorrect;   // "true" or "false"
@@ -127,16 +127,17 @@ function restartQuiz() {
 
   currentIndex = 0;
   score= 0;
+  shuffledQs= shuffleArray(questions);
   nextBtn.disabled = true;
   currentQuestionEl.innerText = currentIndex + 1;
   progressBar.style.width = '0%';
-
-
-  // clear any styling on choices
+// clear any styling on choices
   choicesEls.forEach(b => {
     b.classList.remove('correct','wrong');
     b.disabled = false;
   });
+  updateProgress();
+  showQuestion();
 }
 //shuffle feature for the questions and choices
 function shuffleArray(arr) {
