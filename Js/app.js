@@ -11,6 +11,9 @@ const nextBtn= document.getElementById('next-btn');
 const scoreEl= document.getElementById('score');
 const resultMsg= document.getElementById('result-message');
 const restartBtn= document.getElementById('restart-btn');
+const currentQuestionEl= document.getElementById('current-question');
+const totalQuestionsEl= document.getElementById('total-questions');
+const progressBar= document.getElementById('progress-bar');
 //Initial visibility setup
 startScreen.style.display= 'flex';    // show start
 quizScreen.style.display= 'none';    // hide quiz
@@ -31,12 +34,20 @@ function startQuiz() {
   startScreen.style.display= 'none';
   quizScreen.style.display= 'flex';
   endScreen.style.display= 'none';
-
+  totalQuestionsEl.innerText = shuffledQs.length;
+  updateProgress();
   showQuestion();
 }
-
+//Progress bar
+function updateProgress() {
+  currentQuestionEl.innerText = currentIndex + 1;
+  // fill the bar proportionally
+  const pct = ((currentIndex + 1) / shuffledQs.length) * 100;
+  progressBar.style.width = `${pct}%`;
+}
 //Show a question
 function showQuestion() {
+  updateProgress();
   const q = shuffledQs[currentIndex];
   questionEl.innerText = q.question;
 
@@ -100,12 +111,12 @@ function showEndScreen() {
   quizScreen.style.display = 'none';
   endScreen.style.display  = 'flex';
 
-  scoreEl.innerText    = `${score} / ${questions.length}`;
+  scoreEl.innerText= `${score} / ${questions.length}`;
   const pct = (score / questions.length)*100;
-  if (pct===100)      resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
-  else if (pct>=80)   resultMsg.innerText = "You are a true FOODIE! 🍽️";
-  else if (pct>=50)   resultMsg.innerText = "Not bad, you're on your way to foodie status! 😉";
-  else                resultMsg.innerText = "Maybe you are not there yet! 🍕";
+  if (pct===100)resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
+  else if (pct>=80)resultMsg.innerText = "You are a true FOODIE! 🍽️";
+  else if (pct>=50)resultMsg.innerText = "Not bad, you're on your way to foodie status! 😉";
+  else resultMsg.innerText = "Maybe you are not there yet! 🍕";
 }
 
 //Restart quiz
@@ -115,8 +126,11 @@ function restartQuiz() {
   startScreen.style.display= 'none';
 
   currentIndex = 0;
-  score        = 0;
+  score= 0;
   nextBtn.disabled = true;
+  currentQuestionEl.innerText = currentIndex + 1;
+  progressBar.style.width = '0%';
+
 
   // clear any styling on choices
   choicesEls.forEach(b => {
