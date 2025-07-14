@@ -14,6 +14,8 @@ const restartBtn= document.getElementById('restart-btn');
 const currentQuestionEl= document.getElementById('current-question');
 const totalQuestionsEl= document.getElementById('total-questions');
 const progressBar= document.getElementById('progress-bar');
+const timerEl= document.getElementById('timer');
+
 //Initial visibility setup
 startScreen.style.display= 'flex';    // show start
 quizScreen.style.display= 'none';    // hide quiz
@@ -24,6 +26,8 @@ nextBtn.disabled= true;      // no “Next” until the user answered
 let shuffledQs= [];
 let currentIndex= 0;
 let score= 0;
+let timeLeft= 30;      //15 seconds per question
+let timerInterval= null;
 /*FUNCTIONS*/
 //Start quiz: shuffle, reset, show quiz
 function startQuiz() {
@@ -47,6 +51,24 @@ function updateProgress() {
 }
 //Show a question
 function showQuestion() {
+   //clear any old timer
+  clearTimer();
+
+  // reset the countdown
+  timeLeft = 30;
+  timerEl.innerText = timeLeft;
+
+  // start ticking
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    timerEl.innerText = timeLeft;
+
+    if (timeLeft <= 0) {
+      // time’s up!
+      clearTimer();
+      handleTimeout();
+    }
+  }, 1000);
   updateProgress();
   const q = shuffledQs[currentIndex];
   questionEl.innerText = q.question;
@@ -75,6 +97,7 @@ function showQuestion() {
 }
 //Handle answer selection
 function selectAnswer(e) {
+  clearTimer();
   const selected= e.target;
   const isCorrect= selected.dataset.correct === 'true';
 
@@ -93,8 +116,21 @@ function selectAnswer(e) {
   choicesEls.forEach(btn => btn.disabled = true);
   nextBtn.disabled = false;
 }
+function handleTimeout() {
+  // mark correct button in green
+  const correctBtn = choicesEls.find(b => b.dataset.correct === 'true');
+  if (correctBtn) correctBtn.classList.add('correct');
 
-
+  // disable all and allow “Next”
+  choicesEls.forEach(b => b.disabled = true);
+  nextBtn.disabled = false;
+}
+function clearTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+}
 //Next question or end
 function handleNext() {
   currentIndex++;

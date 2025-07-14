@@ -161,7 +161,7 @@ body {
   margin-bottom: 1rem;
 }
 .progress-text {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   margin-bottom: 0.5rem;
   color: brown;
 }
@@ -177,4 +177,12 @@ body {
   height: 100%;
   background-color: burlywood;    /* matches your button color */
   transition: width 0.3s ease-in-out;
+}
+.timer {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: brown;
+}
+#timer {
+  font-weight: 600;
 }
