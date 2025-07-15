@@ -155,7 +155,7 @@ function showEndScreen() {
   //Hidding the quiz screen and showing the result screen
   quizScreen.style.display = 'none';
   endScreen.style.display  = 'flex';
-
+  // Show the total score based of the category mode chosen
   scoreEl.innerText= `${score} / ${shuffledQs.length}`;
   const pct = (score / questions.length)*100;
   if (pct===100)resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
@@ -195,16 +195,18 @@ function shuffleArray(arr) {
   return a;
 }
 //Event listeners
+//Now clicking the start button will take the user to the ctg screen not the quiz screen as previously
 startBtn.addEventListener('click', () => {
   startScreen.style.display    = 'none';
   categoryScreen.style.display = 'flex';
 });
-//The user chose a category
+//The user chose a category and it will take him to the quiz screen with questions are filtered based on ctg
 categoryBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     const ctg = btn.dataset.category;
     categoryScreen.style.display = 'none';
     quizScreen.style.display     = 'flex';
+    //calling the startQuiz function with passing an arg 
     startQuiz(ctg);
   });
 });
