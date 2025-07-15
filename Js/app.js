@@ -3,6 +3,8 @@ import questions from './data.js';
 //Grab DOM elements
 const startBtn= document.getElementById('start-btn');
 const startScreen= document.querySelector('.start-screen');
+const categoryScreen= document.querySelector('.category-screen');
+const categoryBtns= Array.from(document.querySelectorAll('.category-btn'));
 const quizScreen= document.querySelector('.quiz-screen');
 const endScreen= document.querySelector('.end-screen');
 const questionEl= document.getElementById('question');
@@ -18,6 +20,7 @@ const timerEl= document.getElementById('timer');
 
 //Initial visibility setup
 startScreen.style.display= 'flex';    // show start
+categoryScreen.style.display = 'none'; //hide category 
 quizScreen.style.display= 'none';    // hide quiz
 endScreen.style.display= 'none';    // hide end
 nextBtn.disabled= true;      // no “Next” until the user answered
@@ -30,8 +33,14 @@ let timeLeft= 30;      //15 seconds per question
 let timerInterval= null;
 /*FUNCTIONS*/
 //Start quiz: shuffle, reset, show quiz
-function startQuiz() {
-  shuffledQs= shuffleArray(questions);
+function startQuiz(category) {
+  if (category === 'Mixed') {
+    shuffledQs = shuffleArray(questions).slice(0, 25);
+  } else {
+    // filter by that category, then shuffle & take 10
+    const pool = questions.filter(q => q.category === category);
+    shuffledQs = shuffleArray(pool).slice(0, 10);
+  }
   currentIndex= 0;
   score= 0;
   //Once the user starts the game the quiz questions screen will be shown
@@ -147,7 +156,7 @@ function showEndScreen() {
   quizScreen.style.display = 'none';
   endScreen.style.display  = 'flex';
 
-  scoreEl.innerText= `${score} / ${questions.length}`;
+  scoreEl.innerText= `${score} / ${shuffledQs.length}`;
   const pct = (score / questions.length)*100;
   if (pct===100)resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
   else if (pct>=80)resultMsg.innerText = "You are a true FOODIE! 🍽️";
@@ -157,9 +166,10 @@ function showEndScreen() {
 
 //Restart quiz
 function restartQuiz() {
-  quizScreen.style.display = 'flex';
-  endScreen.style.display  = 'none';
-  startScreen.style.display= 'none';
+  quizScreen.style.display= 'none';
+  endScreen.style.display= 'none';
+  categoryScreen.style.display= 'none';
+  startScreen.style.display= 'flex';
 
   currentIndex = 0;
   score= 0;
@@ -185,7 +195,19 @@ function shuffleArray(arr) {
   return a;
 }
 //Event listeners
-startBtn.addEventListener('click', startQuiz);
+startBtn.addEventListener('click', () => {
+  startScreen.style.display    = 'none';
+  categoryScreen.style.display = 'flex';
+});
+//The user chose a category
+categoryBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const ctg = btn.dataset.category;
+    categoryScreen.style.display = 'none';
+    quizScreen.style.display     = 'flex';
+    startQuiz(ctg);
+  });
+});
 choicesEls.forEach(btn => btn.addEventListener('click', selectAnswer));
 nextBtn.addEventListener('click', handleNext);
 restartBtn.addEventListener('click', restartQuiz);
