@@ -3,6 +3,8 @@ import questions from './data.js';
 //Grab DOM elements
 const startBtn= document.getElementById('start-btn');
 const startScreen= document.querySelector('.start-screen');
+const difficultyScreen= document.querySelector('.difficulty-screen');
+const difficultyBtns= Array.from(document.querySelectorAll('.difficulty-btn'));
 const categoryScreen= document.querySelector('.category-screen');
 const categoryBtns= Array.from(document.querySelectorAll('.category-btn'));
 const quizScreen= document.querySelector('.quiz-screen');
@@ -17,10 +19,10 @@ const currentQuestionEl= document.getElementById('current-question');
 const totalQuestionsEl= document.getElementById('total-questions');
 const progressBar= document.getElementById('progress-bar');
 const timerEl= document.getElementById('timer');
-
 //Initial visibility setup
 startScreen.style.display= 'flex';    // show start
-categoryScreen.style.display = 'none'; //hide category 
+categoryScreen.style.display = 'none'; //hide category
+difficultyScreen.style.display = 'none'; //hide difficulty
 quizScreen.style.display= 'none';    // hide quiz
 endScreen.style.display= 'none';    // hide end
 nextBtn.disabled= true;      // no “Next” until the user answered
@@ -31,20 +33,28 @@ let currentIndex= 0;
 let score= 0;
 let timeLeft= 30;      //15 seconds per question
 let timerInterval= null;
+let chosenCategory = null;
+let chosenDifficulty = null;
 /*FUNCTIONS*/
 //Start quiz: shuffle, reset, show quiz
-function startQuiz(category) {
-  if (category === 'Mixed') {
-    shuffledQs = shuffleArray(questions).slice(0, 25);
-  } else {
-    // filter by that category, then shuffle & take 10
-    const pool = questions.filter(q => q.category === category);
-    shuffledQs = shuffleArray(pool).slice(0, 10);
-  }
+function startQuiz(category, difficulty) {
+  let pool = category === 'Mixed'
+    ? questions                // If “Mixed”, use the entire bank
+    : questions.filter(q => q.category === category);
+  //Otherwise, filter to only those whose q.category matches
+
+  //Filter by difficulty
+  pool = pool.filter(q => q.difficulty === difficulty);
+  //Now pool contains only questions of the chosen difficulty
+
+  //Pick the right count (25 for Mixed, 10 for specific categories)
+  const count = category === 'Mixed' ? 25 : 10;
+  shuffledQs  = shuffleArray(pool).slice(0, count);
   currentIndex= 0;
   score= 0;
   //Once the user starts the game the quiz questions screen will be shown
   startScreen.style.display= 'none';
+  difficultyScreen.style.display = 'none';
   quizScreen.style.display= 'flex';
   endScreen.style.display= 'none';
   totalQuestionsEl.innerText = shuffledQs.length;
@@ -82,11 +92,10 @@ function showQuestion() {
   const q = shuffledQs[currentIndex];
   questionEl.innerText = q.question;
 
-  //Build an array of { text, isCorrect }
-  const choiceObjs = q.choices.map((text, i) => ({
-    text,
-    isCorrect: i === q.answer
-  }));
+  let choiceObjs = q.choices
+    .map((text, i) => ({ text, isCorrect: i === q.answer }))
+    .filter(c => c.text.trim() !== "");
+
 
   //Shuffle it
   const shuffled = shuffleArray(choiceObjs);
@@ -99,9 +108,18 @@ function showQuestion() {
   });
 
   //Render shuffled text + mark correct
-  choicesEls.forEach((btn, i) => {
+  /*choicesEls.forEach((btn, i) => {
     btn.innerText= shuffled[i].text;
     btn.dataset.correct= shuffled[i].isCorrect;   // "true" or "false"
+  });*/
+  choicesEls.forEach((btn, i) => {
+    if (i < choiceObjs.length) {
+      btn.style.display = 'block';
+      btn.innerText    = choiceObjs[i].text;
+      btn.dataset.correct = choiceObjs[i].isCorrect;
+    } else {
+      btn.style.display = 'none';
+    }
   });
 }
 //Handle answer selection
@@ -203,13 +221,16 @@ startBtn.addEventListener('click', () => {
 //The user chose a category and it will take him to the quiz screen with questions are filtered based on ctg
 categoryBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    const ctg = btn.dataset.category;
+    chosenCategory= btn.dataset.category;
     categoryScreen.style.display = 'none';
-    quizScreen.style.display     = 'flex';
-    //calling the startQuiz function with passing an arg 
-    startQuiz(ctg);
+    difficultyScreen.style.display = 'flex';
   });
 });
+difficultyBtns.forEach(btn => btn.addEventListener('click', () => {
+  chosenDifficulty = btn.dataset.diff;
+  difficultyScreen.style.display = 'none';
+  startQuiz(chosenCategory, chosenDifficulty);
+}));
 choicesEls.forEach(btn => btn.addEventListener('click', selectAnswer));
 nextBtn.addEventListener('click', handleNext);
 restartBtn.addEventListener('click', restartQuiz);
