@@ -63,6 +63,7 @@ body {
   padding: 20px;
   min-height: 100vh;
   text-align: center;
+  font-size: 30px;
 }
 
 .categories-container {
@@ -79,7 +80,7 @@ body {
   color: brown;
   border: none;
   padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.2s;

@@ -157,7 +157,7 @@ function showEndScreen() {
   endScreen.style.display  = 'flex';
   // Show the total score based of the category mode chosen
   scoreEl.innerText= `${score} / ${shuffledQs.length}`;
-  const pct = (score / questions.length)*100;
+  const pct = (score / shuffledQs.length)*100;
   if (pct===100)resultMsg.innerText = "Perfect score, you're the ultimate FOODIE! 🏆";
   else if (pct>=80)resultMsg.innerText = "You are a true FOODIE! 🍽️";
   else if (pct>=50)resultMsg.innerText = "Not bad, you're on your way to foodie status! 😉";
