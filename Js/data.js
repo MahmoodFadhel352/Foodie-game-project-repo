@@ -40,9 +40,9 @@ const questions = [
 
   // — Chinese
   {
-    question: "What is the primary ingredient in traditional egg drop soup?",
-    choices: ["Chicken", "Corn", "Tofu", "Egg"],
-    answer: 3,           // Egg
+    question: "Which bean is the main ingredient in tofu?",
+    choices: ["Lentils" , "Chickpeas" , "Soybeans" , "Black beans"],
+    answer: 2,           // Soybeans
     category: "Chinese",
     difficulty: "easy"
   },
@@ -98,9 +98,9 @@ const questions = [
     difficulty: "medium"
   },
   {
-    question: "What cured meat do you serve with melon in prosciutto e melone?",
-    choices: ["Salami", "Pancetta", "Prosciutto", "Mortadella"],
-    answer: 2,           // Prosciutto
+    question: "Which Italian cheese is made by stretching curds in hot water to create its signature stringy texture?",
+    choices: ["Ricotta" , "Mozzarella" , "Parmesan" , "Gorgonzola"],
+    answer: 1,           // Mozzarella
     category: "Italian",
     difficulty: "medium"
   },
@@ -223,16 +223,16 @@ const questions = [
 
   // — New Chinese questions (5)
   {
-    question: "Which dish features stir-fried rice with vegetables and sometimes meat?",
-    choices: ["Pilaf", "Paella", "Risotto", "Fried Rice"],
+    question: "What spice, often used in five‑spice powder, consists of star‑shaped pods?",
+    choices: ["Cinnamon" , "Cloves" , "Fennel" , "Star anise"],
     answer: 3,
     category: "Chinese",
     difficulty: "easy"
   },
   {
-    question: "What is the Chinese word for tofu?",
-    choices: ["Tempeh", "Paneer", "Halloumi", "Tofu"],
-    answer: 3,
+    question: " Which deep‑fried dim‑sum roll is most often filled with pork and shrimp?",
+    choices: ["Egg roll" , "Spring roll" , "Samosa", "Wonton"],
+    answer: 1,
     category: "Chinese",
     difficulty: "easy"
   },
@@ -311,9 +311,9 @@ const questions = [
     difficulty: "medium"
   },
   {
-    question: "Which small fish is commonly used to make anchovy paste?",
-    choices: ["Tuna", "Salmon", "Anchovy", "Sardine"],
-    answer: 2,
+    question: "What sea vegetable is traditionally used to wrap sushi rolls?",
+    choices: ["Kelp" , "Nori" , "Dulse" , "Wakame"],
+    answer: 1,
     category: "Seafood",
     difficulty: "easy"
   },
