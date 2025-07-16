@@ -960,7 +960,7 @@ const questions = [
     difficulty: "easy"
   },
   {
-    question: "All of these are fast-food chains EXCEPT:",
+    question: "All of the following are quick‑service fast‑food chains where you order at the counter or drive‑thru EXCEPT:",
     choices: ["McDonald's", "Taco Bell", "Burger King", "Pizza Hut"],
     answer: 3,
     category: "Junk Food",
