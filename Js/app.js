@@ -19,6 +19,7 @@ const currentQuestionEl= document.getElementById('current-question');
 const totalQuestionsEl= document.getElementById('total-questions');
 const progressBar= document.getElementById('progress-bar');
 const timerEl= document.getElementById('timer');
+const bgMusic= document.getElementById('bg-music');
 //Initial visibility setup
 startScreen.style.display= 'flex';    // show start
 categoryScreen.style.display = 'none'; //hide category
@@ -211,6 +212,7 @@ function shuffleArray(arr) {
 //Event listeners
 //Now clicking the start button will take the user to the ctg screen not the quiz screen as previously
 startBtn.addEventListener('click', () => {
+  bgMusic.play();
   startScreen.style.display= 'none';
   categoryScreen.style.display= 'flex';
 });
