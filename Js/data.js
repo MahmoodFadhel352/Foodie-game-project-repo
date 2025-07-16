@@ -700,7 +700,7 @@ const questions = [
     choices: ["Sorbet", "Granita", "Gelato", "Sherbet"],
     answer: 2,
     category: "Italian",
-    difficulty: "easy"
+    difficulty: "hard"
   },
 
   // 6 Medium
@@ -749,11 +749,11 @@ const questions = [
 
   // 8 Hard
   {
-    question: "Which flour type—milled extremely fine—is labeled ‘00’ in Italy?",
+    question: "Which flour type—milled extremely fine is labeled ‘00’ in Italy?",
     choices: ["All-purpose", "Semolina", "00", "Whole wheat"],
     answer: 2,
     category: "Italian",
-    difficulty: "hard"
+    difficulty: "easy"
   },
   {
     question: "True or False: Tiramisu traditionally contains raw egg yolks.",
