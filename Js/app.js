@@ -110,9 +110,9 @@ function showQuestion() {
   //Render shuffled text + mark correct
   choicesEls.forEach((btn, i) => {
     if (i < shuffled.length) {
-      btn.style.display = 'block';
-      btn.innerText    = shuffled[i].text;
-      btn.dataset.correct = shuffled[i].isCorrect;
+      btn.style.display= 'block';
+      btn.innerText= shuffled[i].text;
+      btn.dataset.correct= shuffled[i].isCorrect;
     } else {
       btn.style.display = 'none';
     }
@@ -211,8 +211,8 @@ function shuffleArray(arr) {
 //Event listeners
 //Now clicking the start button will take the user to the ctg screen not the quiz screen as previously
 startBtn.addEventListener('click', () => {
-  startScreen.style.display    = 'none';
-  categoryScreen.style.display = 'flex';
+  startScreen.style.display= 'none';
+  categoryScreen.style.display= 'flex';
 });
 //The user chose a category and it will take him to the quiz screen with questions are filtered based on ctg
 categoryBtns.forEach(btn => {
