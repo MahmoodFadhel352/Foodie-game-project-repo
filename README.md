@@ -1,14 +1,29 @@
+![Foodie Game Logo](/Assets/Game%20logo.png)
 # Foodie-game-project-repo
 
-A fun and interactive browser-based quiz game that tests your knowledge across five delicious food categories: Junk Food, Seafood, Arabic Food, Italian Food, and Chinese Food.
+A fun and interactive browser-based quiz game that tests your knowledge across five food categories: Junk Food, Seafood, Arabic Food, Italian Food, and Chinese Food.
 
 
 ## 📋 Project Description
 
-**Foodie-game** is a web-based quiz game built using **HTML**, **CSS**, and **JavaScript**. The game consists of **25 questions**, with **5 questions per category**. Users will be going through each food category and answer multiple-choice questions to test their knowledge.
+**Foodie-game** is a web-based quiz game built using **HTML**, **CSS**, and **JavaScript**. The game consists of **25 questions** for one mixed category and 10 for each specific category depending on the user's choice , with **total of approximately 150 questions in the dataset**. Users will be going through each food category and answer multiple-choice questions to test their knowledge. It can be T/F, fill in the blanks or a regular MCQ question.
 
-Each correct answer rewards the player with points, and at the end of the quiz, the total score is shown and will be decided whether you are a true foodie or not based on the number of questions you answered correctly or points so a win lose scenario.
+Each correct answer will be calculated, and at the end of the quiz, the total score is shown and will be decided whether you are a true foodie or not based on the number of questions you answered correctly and there is a different criteria and message at the end depending on how well the user has done. So a win lose scenario.
+## Why Chosen this game?
+I like food, simply xD. And i always like the quiz-based web browser games where you learn new things, new cultures and it encourages you to try new dishes. For example, if i see a question about special type of seafood, then i might get curious to try it out.
+## Getting started
+>[Foodie Game](https://foodiegame.surge.sh/)
 
+>[Trelloboard](https://trello.com/b/0H8b6rth/foodie-game-project)
+
+>[Wireframe](https://drive.google.com/file/d/19uQbMy4TTDOjH8v7Tcxfl67l-rvM92d-/view?usp=sharing)
+
+## Attribution
+Used a track for the background-music from this website
+[Chosic](https://www.chosic.com/free-music/chill/)
+
+## Technologies used
+HTML, CSS, Javascript
 
 ## 🎯 Features
 
@@ -18,21 +33,37 @@ Each correct answer rewards the player with points, and at the end of the quiz, 
   - Arabic Food
   - Italian Food
   - Chinese Food
-- ❓ 25 Total Questions (5 per category)
+- ❓ 25 Total Questions (Mixed mode)
+- 5 Questions per specific mode
 - 💯 Score tracking and final score display
 - 🔁 Restart game functionality
-- 🎨 Responsive and stylish UI using CSS
-- 💡 Vanilla JavaScript logic
+- 💡 Deployed online using surge
+- **Category + Difficulty Modes**  
+  Tailor your quiz: choose category **and** challenge level before you begin.
+- ⏰ Integrated Timer
+- 📊 Progress Bar: Visual tracker keeps you knowing exactly how far along you are.
+- 🔀 Answer Randomization: Prevents memorization by shuffling answer order every question.
 
-## use case
-1. The user at the start would interact with the main page and click the start button
-2. The user will go through each category questions that will be shuffled and will have 4 choices which one of them is correct
-3. A message will appear when the user clicked an answer whether it is correct or incorrect
-4. The user would be considered a winner based on a certain criteria like for example 12 questions right puts you as a true foodie and 20 ones right is considered master foodie
-5. After finishing the game, the user would get his final score, comment
-6. There would be an option to restart the game
-## Technologies used
-HTML, CSS, javascript
-## Credit
->[Trelloboard](https://trello.com/b/0H8b6rth/foodie-game-project)
->[Wireframe](https://drive.google.com/file/d/19uQbMy4TTDOjH8v7Tcxfl67l-rvM92d-/view?usp=sharing)
+## 💡 Use Cases
+
+- 🎓 **Educational Tool**  
+  Teachers can use the quiz in language or culture classes to reinforce students’ knowledge of global cuisines.
+
+- 🏫 **Team‑Building Activity**  
+  Great for office lunches or virtual meetups, challenge coworkers to see who’s the ultimate Foodie!
+
+- 🎉 **Party Icebreaker**  
+  Host a “Foodie Trivia” night with friends or family, selecting different categories to match your menu.
+
+- 🧠 **Self‑Assessment & Learning**  
+  Food enthusiasts can test themselves on spices, dishes, and cooking techniques to deepen their culinary know‑how.
+
+- 🛫 **Travel Prep**  
+  Brush up on local specialties before a trip—pick “Italian” or “Seafood” mode to learn regional staples.
+
+- 📱 **Casual Mobile Fun**  
+  Quick 30‑second rounds on your phone make it perfect for commutes or short breaks—swipe to advance and keep the challenge rolling!
+
+## Next step?
+Make the game responsive for mobile phones and tablets
+
