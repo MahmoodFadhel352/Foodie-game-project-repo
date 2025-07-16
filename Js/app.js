@@ -108,15 +108,11 @@ function showQuestion() {
   });
 
   //Render shuffled text + mark correct
-  /*choicesEls.forEach((btn, i) => {
-    btn.innerText= shuffled[i].text;
-    btn.dataset.correct= shuffled[i].isCorrect;   // "true" or "false"
-  });*/
   choicesEls.forEach((btn, i) => {
-    if (i < choiceObjs.length) {
+    if (i < shuffled.length) {
       btn.style.display = 'block';
-      btn.innerText    = choiceObjs[i].text;
-      btn.dataset.correct = choiceObjs[i].isCorrect;
+      btn.innerText    = shuffled[i].text;
+      btn.dataset.correct = shuffled[i].isCorrect;
     } else {
       btn.style.display = 'none';
     }
