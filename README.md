@@ -34,7 +34,7 @@ HTML, CSS, Javascript
   - Italian Food
   - Chinese Food
 - ❓ 25 Total Questions (Mixed mode)
-- 5 Questions per specific mode
+- 10 Questions per specific mode
 - 💯 Score tracking and final score display
 - 🔁 Restart game functionality
 - 💡 Deployed online using surge
